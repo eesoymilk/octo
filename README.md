@@ -29,6 +29,26 @@ dataset and accessible compute budgets.
 
 
 ## Installation
+
+### Option A: Docker (Recommended for GPU)
+```bash
+docker build -t octo .
+docker run --gpus all -it octo
+```
+
+Run the inference example:
+```bash
+# Quick single-image demo
+python examples/inference_pretrained.py
+
+# Full trajectory inference on a Bridge dataset episode
+python examples/inference_pretrained.py --full-trajectory
+
+# Use a different checkpoint
+python examples/inference_pretrained.py --checkpoint hf://rail-berkeley/octo-base-1.5
+```
+
+### Option B: Conda
 ```bash
 conda create -n octo python=3.10
 conda activate octo
@@ -40,7 +60,7 @@ For GPU:
 pip install --upgrade "jax[cuda11_pip]==0.4.20" -f https://storage.googleapis.com/jax-releases/jax_cuda_releases.html
 ```
 
-For TPU
+For TPU:
 ```bash
 pip install --upgrade "jax[tpu]==0.4.20" -f https://storage.googleapis.com/jax-releases/libtpu_releases.html
 ```
